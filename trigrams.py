@@ -48,8 +48,4 @@ def compile_story(the_dictionary, num_words):
     print (output)
     return output
 
-
-
-
-
-main('text.txt', 50)
+main('text.txt', 100)
