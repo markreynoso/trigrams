@@ -50,4 +50,4 @@ def compile_story(the_dictionary, num_words):
     output = ' '.join(output)
     return output
 
-main('text.txt', 100)
+
