@@ -2,14 +2,16 @@
 
 
 import io
+import random
 import string
 
 
-def main(path):
+def main(path, num_words):
     f = io.open(path, encoding='utf-8')
     book = f.read().replace('\n', ' ').lower()
+    new_book = ' '.join(word.strip(string.punctuation) for word in book.split())
     f.close()
-    word_list = (book.split(' '))
+    word_list = (new_book.split(' '))
     the_dictionary = {}
     for i in range(len(word_list)-2):
         a_key = "{} {}".format(word_list[i], word_list[i+1])
@@ -18,7 +20,17 @@ def main(path):
             the_dictionary[a_key].append(a_value)
         else:
             the_dictionary[a_key] = [a_value]
-    print (the_dictionary)
+    compile_story(num_words, the_dictionary)
+
+def compile_story(num_words, the_dictionary):   
+    start_key = random.choice(list(the_dictionary.keys()))
+    output = start_key.split()
+    while len(output) < num_words:
+        search_string = output[-2] + " " + output[-1]
+        value = random.choice(the_dictionary[search_string])
+        output.append(value)
+    output = ' '.join(output)
+    print(output)
 
 
 
@@ -26,4 +38,4 @@ def main(path):
 
 
 
-main('text.txt')
+main('text.txt', 50)
