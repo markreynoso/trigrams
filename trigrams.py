@@ -4,6 +4,7 @@
 import io
 import random
 import string
+import sys
 
 
 def main(path, num_words): # pragma: no cover
@@ -49,5 +50,26 @@ def compile_story(the_dictionary, num_words):
             break
     output = ' '.join(output)
     return output
+
+
+USAGE = """ 
+Usage: trigrams m n
+    
+    where m and n are required and m should be a text file and n should be an interger
+
+"""
+
+if __name__ == '__main__':
+    if len(sys.argv) != 3:
+        print (USAGE)
+        sys.exit(0)
+    try:
+        result = main(sys.argv[1], int(sys.argv[2]))
+    except RuntimeError:
+        print("plese input a text file and an int for file to run")
+        sys.exit(1)
+
+    print (result)
+    sys.exit(0)
 
 
