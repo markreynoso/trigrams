@@ -52,4 +52,4 @@ def compile_story(the_dictionary, num_words):
 
 
 
-main('text.txt', 50)
+main('large_txt.txt', 500)
