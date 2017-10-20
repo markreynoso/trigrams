@@ -9,7 +9,7 @@ import string
 def main(path, num_words): # pragma: no cover
     create_the_list = create_list(path)
     dictionary = create_dictionary(create_the_list)
-    new_story = compile_story(dictionary, num_words)
+    return compile_story(dictionary, num_words)
 
 
 
@@ -42,14 +42,12 @@ def compile_story(the_dictionary, num_words):
     output = start_key.split()
     while len(output) < num_words:
         search_string = output[-2] + " " + output[-1]
-        value = random.choice(the_dictionary[search_string])
-        output.append(value)
+        try: 
+            value = random.choice(the_dictionary[search_string])
+            output.append(value)
+        except KeyError:
+            break
     output = ' '.join(output)
-    print (output)
     return output
 
-
-
-
-
-main('text.txt', 50)
+main('text.txt', 100)
