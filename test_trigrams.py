@@ -33,13 +33,13 @@ def test_create_dictionary_key_at_least_one_value():
         assert len(dictionary[key]) > 0
 
 def test_compile_story_is_string():
-    """tests that the returned dictionary of create_dictionary() has at least one value in each key"""
+    """tests that compile_story() returns a string"""
     from trigrams import main
     story = main('text.txt', 100)
     assert type(story) == str
 
 def test_compile_story_contains_correct_number_of_words():
-    """tests that the returned dictionary of create_dictionary() has at least one value in each key"""
+    """tests that the compile_story() returns the proper length string"""
     from trigrams import main
     story = main('text.txt', 40)
     assert len(story.split()) == 40
